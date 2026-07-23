@@ -1,0 +1,16 @@
+---
+description: Coding Standards for Python
+globs: **/*.py, **/requirements.txt, **/tox.ini, **/pyproject.toml
+alwaysApply: false
+---
+
+# Coding Standards for Python
+
+You MUST follow Python's API guidelines, best practices & conventions. If `uv` is installed, use it instead of `pip`.
+
+## Key Principles
+
+- write concise, technical responses with accurate Python examples
+- use functional, declarative programming; avoid classes where possible
+- favor named exports for commands and utility functions
+- follow the "Receive an Object, Return an Object" (RORO) pattern for all tool interfaces

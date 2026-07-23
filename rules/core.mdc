@@ -1,0 +1,81 @@
+---
+description: Core Behavioral Guidelines
+alwaysApply: true
+---
+
+# Core Behavioral Guidelines
+
+## Language
+
+- use key words and imperatives as follows but with care, sparingly and only where actually required \[[RFC2119]\]
+  - MUST (REQUIRED, SHALL): The definition is an absolute requirement of the specification
+  - MUST NOT (SHALL NOT): The definition is an absolute prohibition of the specification
+  - SHOULD (RECOMMENDED): There may exist valid reasons in particular circumstances to ignore a particular item, but the full implications must be understood and carefully weighed before choosing a different course
+  - SHOULD NOT (NOT RECOMMENDED): There may exist valid reasons in particular circumstances when the particular behavior is acceptable or even useful, but the full implications should be understood and the case carefully weighed before implementing any behavior described with this label
+  - MAY (OPTIONAL): An item is truly optional
+- you MUST NOT use hollow affirmations or similar flattery
+- you MUST get straight to the point and be precise
+- you MUST use American English
+
+## User Requests
+
+- you MUST question user input and critically evaluate requests
+- you SHOULD suggest alternative or better solutions when appropriate rather than blindly following instructions
+
+## Style
+
+- stick to the existing style of the project your are working on unless you are specifically requested to use another style
+- use language-specific best practices if no project exists yet
+- use lowercase with underscores for directories and files (e.g., `scanners/port_scanner.py`)
+
+## Tools
+
+The following table provides a set of common tools that you can use (and potentially what they are preferred over). Use the preferred tools, if they are installed.
+
+| Purpose            | Preferred Tool | Instead of     | Documentation                           |
+| :----------------- | :------------- | :------------- | :-------------------------------------- |
+| Finding files      | `fd`           | `find`         | <https://github.com/sharkdp/fd>         |
+| Fuzzy searching    | `fzf`          |                | <https://github.com/junegunn/fzf>       |
+| JSON parsing       | `jaq`          | `jq`           | <https://github.com/01mf02/jaq>         |
+| Searching in files | `rg`           | `grep`         | <https://github.com/BurntSushi/ripgrep> |
+
+## Containers
+
+- you MUST only write OCI-compliant container definitions
+
+## Programming Language Guidelines
+
+### General
+
+- write clear, concise, and idiomatic code with accurate documentation and examples
+- prioritize modularity, clean code organization, and efficient resource management; avoid code duplication
+- ensure code is well-documented, but avoid useless documentation
+- use functions and modules to encapsulate reusable logic
+- write code with safety, concurrency, and performance in mind
+- use descriptive and expressive variable names that convey intent with auxiliary verbs (e.g., `is_encrypted`, `has_valid_signature`)
+- rely on dependency injection for shared resources where appropriate
+
+### Security
+
+- use secure defaults (e.g., TLSv1.2+, strong cipher suites)
+- sanitize all external inputs, never invoke shell commands with unsanitized strings
+- ensure secrets are loaded from secure stores or environment variables
+- refer to OWASP and NIST SP 800-115 guidelines for best practices in API-driven security tooling
+
+### Performance
+
+- use asynchronous code correctly
+  - synchronous code is for CPU-bound tasks, asynchronous code for I/O-bound tasks
+  - use sync code where async is not needed
+  - avoid blocking operations inside async functions; offload to dedicated blocking threads if necessary
+- batch or chunk large target lists to manage resource utilization
+
+## Glossary & Acronyms
+
+| Acronym / Word | Description               |
+| :------------- | :------------------------ |
+| **OCI**        | Open Container Initiative |
+
+[//]: # (Links)
+
+[RFC2119]: https://datatracker.ietf.org/doc/html/rfc2119
