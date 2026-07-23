@@ -1,0 +1,15 @@
+# -----------------------------------------------
+# ----  GitIgnore  ------------------------------
+# ----  https://git-scm.com/docs/gitignore  -----
+# -----------------------------------------------
+
+# Create gitignore files automatically for with
+# https://www.toptal.com/developers/gitignore
+
+# -----------------------------------------------
+# ----  IDEs  -----------------------------------
+# -----------------------------------------------
+
+.idea/
+.vscode/
+!.vscode/settings.json
