@@ -22,5 +22,6 @@ tmp/
 
 /rules/*
 !/rules/core.mdc
-!/rules/python.mdc
-!/rules/rust.mdc
+!/rules/lang-python.mdc
+!/rules/lang-rust.mdc
+!/rules/lang-shell.mdc

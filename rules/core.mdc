@@ -68,12 +68,15 @@ The following table provides a set of common tools that you can use (and potenti
 - ensure secrets are loaded from secure stores or environment variables
 - refer to OWASP and NIST SP 800-115 guidelines for best practices in API-driven security tooling
 
-### Performance
+### Paradigms
 
-- use asynchronous code correctly
-  - synchronous code is for CPU-bound tasks, asynchronous code for I/O-bound tasks
-  - use sync code where async is not needed
-  - avoid blocking operations inside async functions; offload to dedicated blocking threads if necessary
+#### Asynchronous Programming
+
+- synchronous code is for CPU-bound tasks, asynchronous code for I/O-bound tasks
+- use sync code where async is not needed
+- avoid blocking operations inside async functions; offload to dedicated blocking threads if necessary
+- favor structured concurrency: prefer scoped tasks and clean cancellation paths.
+- implement timeouts, retries, and backoff strategies for robust async operations
 
 ## Glossary & Acronyms
 
