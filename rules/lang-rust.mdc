@@ -1,0 +1,60 @@
+---
+description: Coding Standards for Rust
+globs: **/*.rs, **/Cargo.toml, **/rust-toolchain.toml
+alwaysApply: false
+---
+
+# Coding Standards for Rust
+
+## Key Principles
+
+- adhere to [Rust's naming conventions](https://rust-lang.github.io/api-guidelines/naming.html)
+- embrace Rust's ownership and type system
+- the standard library provides a great reference for best-practices
+
+## Tooling
+
+- use or create `rust-toolchain.toml` files
+- before treating Rust changes as done, check the general linting, formatting and documentation
+
+### General Linting
+
+- use `clippy` for general linting tasks
+- check against linting issues with `cargo clippy --quiet --bins --tests --benches --no-deps`
+- respect all lints defined in `Cargo.toml`
+- use `#[expect(...)]` instead of `#[allow(...)]`
+
+### Formatting
+
+- use `rustfmt` for formatting-related tasks
+- format the code with `cargo fmt --all`
+- check the formatting with `cargo fmt --all --quiet --message-format=human --check`
+
+### Documentation
+
+- use `cargo doc` for documentation-related tasks
+- check the documentation with `cargo doc --quiet --all-features --no-deps --document-private-items`
+- use intra-doc links
+
+## Paradigms
+
+### Error Handling
+
+- embrace `Result` and `Option` for error handling
+- use `?` operator to propagate errors, especially in async functions
+- consider implementing custom error types using `::thiserror` for more descriptive errors
+- consider using `anyhow` for non-performance critical error handling
+
+### Asynchronous Programming
+
+- prefer `async fn` over `fn -> impl Future`
+- use `.await` responsibly, ensuring safe points for context switching
+- prefer bounded channels for backpressure; handle capacity limits gracefully
+- leverage [`tokio`] (an async runtime) for concurrency
+  - use `::tokio::sync::Mutex` and `::tokio::sync::RwLock` for shared state across tasks instead of their standard-library counterparts
+  - use `::tokio::task::yield_now` to yield control in cooperative multitasking scenarios
+  - write unit tests with `tokio::test` for async tests
+
+[//]: # (Links)
+
+[`tokio`]: https://docs.rs/crate/tokio/latest
