@@ -9,6 +9,8 @@ dictionaries:
   - bash
 
 words:
+  - agentic
+  - backpressure
   - unsanitized
 
 ignoreWords:
@@ -17,4 +19,6 @@ ignoreWords:
   - RORO
 
   # Rust
+  - clippy
   - rustup
+  - thiserror

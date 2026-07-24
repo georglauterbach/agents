@@ -3,6 +3,7 @@ description: Ponytail, lazy senior dev mode. Always pick the simplest solution t
 alwaysApply: true
 ---
 
+[//]: # (cSpell: disable)
 [//]: # (Stolen from https://github.com/DietrichGebert/ponytail)
 
 # Ponytail, lazy senior dev mode

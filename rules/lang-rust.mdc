@@ -47,6 +47,11 @@ alwaysApply: false
 
 ### Asynchronous Programming
 
+- synchronous code is for CPU-bound tasks, asynchronous code for I/O-bound tasks
+- avoid blocking operations inside async functions; offload to dedicated blocking threads if necessary
+- favor structured concurrency: prefer scoped tasks and clean cancellation paths
+- implement timeouts, retries, and backoff strategies for robust async operations
+
 - prefer `async fn` over `fn -> impl Future`
 - use `.await` responsibly, ensuring safe points for context switching
 - prefer bounded channels for backpressure; handle capacity limits gracefully

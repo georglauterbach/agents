@@ -8,7 +8,7 @@ alwaysApply: false
 
 ## Key Principles
 
-- use `bash` 5+ by default; use `sh`where portability is a concern
+- use `bash` 5+ by default; use `sh` where portability is a concern
 - quote everything; use `""` when string-formatting or expanding variables, and `''` when using plain strings
 - avoid using `eval` or parsing human-output commands
 - use "screaming snake case" for variable names and "snake case" for function name

@@ -7,8 +7,7 @@ alwaysApply: true
 
 ## Dialogues
 
-- use American English
-- do not use hollow affirmations or flattery, be precise
+- use precise American English without hollow affirmations or flattery
 - use the following key words and imperatives where appropriate ([RFC2119](https://datatracker.ietf.org/doc/html/rfc2119))
 
 | Keyword    | Definition |
@@ -28,7 +27,7 @@ alwaysApply: true
 
 - stick to the existing style of the project
 - use language-specific best practices if no project exists yet
-- use lowercase with underscores for directories and files (e.g., `scanners/port_scanner.rs`)
+- for directory and file names, match the repository and language norms; prefer lowercase and underscores (e.g., `scanners/port_scanner.rs`)
 
 ## Extra Tools
 
@@ -41,39 +40,25 @@ You may use the following tools, if they are installed:
 | JSON parsing       | `jaq` | `jq`       | <https://github.com/01mf02/jaq>         |
 | Searching in files | `rg`  | `grep`     | <https://github.com/BurntSushi/ripgrep> |
 
+When writing scripts, use programs that are available on all systems.
+
 ## Technologies
 
 ### Containers
 
-- OCI = Open Container Initiative
-- you MUST only write OCI-compliant container definitions
+- write OCI-compliant (Open Container Initiative) container definitions
 
 ## (Programming) Language Guidelines
 
-### General
-
-- always follow a specific language's API guidelines, best practices & conventions
+- Ponytail's rules for structure and scope take precedency over rules from this file
+- follow a specific language's API guidelines, best practices & conventions
 - write clear, technical, concise, and idiomatic code with accurate documentation and examples
-- prioritize modularity, clean code organization, and efficient resource management; avoid code duplication
-- ensure code is well-documented; avoid useless documentation
-- use functional, declarative programming
+- prioritize modularity, clean code organization, and efficient resource management
+- ensure code is well-documented but avoid useless documentation
 - write code with safety and performance in mind
 - use descriptive and expressive variable names that convey intent (e.g., `has_valid_signature`)
 - match the [EditorConfig](https://editorconfig.org/) configuration from `.editorconfig` files
-- rely on dependency injection for shared resources where appropriate
-
-### Security
-
-- use secure defaults (e.g., TLSv1.2+, strong cipher suites)
-- sanitize all external inputs, never invoke shell commands with unsanitized strings
-- ensure secrets are loaded from secure stores or environment variables
-- refer to OWASP and NIST guidelines for security-relevant best practices
-
-### Paradigms
-
-#### Asynchronous Programming
-
-- synchronous code is for CPU-bound tasks, asynchronous code for I/O-bound tasks
-- avoid blocking operations inside async functions; offload to dedicated blocking threads if necessary
-- favor structured concurrency: prefer scoped tasks and clean cancellation paths
-- implement timeouts, retries, and backoff strategies for robust async operations
+- use secure defaults
+  - sanitize all external inputs, never invoke shell commands with unsanitized strings
+  - ensure secrets are loaded from secure stores or environment variables
+  - refer to OWASP and NIST guidelines for security-relevant best practices

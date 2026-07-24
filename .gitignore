@@ -13,16 +13,16 @@ tmp/
 # -----------------------------------------------
 
 .idea/
-.vscode/
+.vscode/*
 !.vscode/settings.json
 
 # -----------------------------------------------
-# ----  IDEs  -----------------------------------
+# ----  Rules  ----------------------------------
 # -----------------------------------------------
 
 /rules/*
 !/rules/core.mdc
-!/rules/ponytail.mdc
 !/rules/lang-python.mdc
 !/rules/lang-rust.mdc
 !/rules/lang-shell.mdc
+!/rules/style-ponytail.mdc

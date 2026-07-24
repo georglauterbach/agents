@@ -1,3 +1,3 @@
-# Agent-Specific Tooling
+# Agentic Development
 
-This repository contains skills, rules and more to efficiently and safely develop software with agents.
+This repository contains rules to efficiently and safely develop software with agents. You can simply copy the rules from [`rules](./rules/) into `~/.cursor/rules/` or symlink them.
