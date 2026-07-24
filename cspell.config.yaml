@@ -12,5 +12,9 @@ words:
   - unsanitized
 
 ignoreWords:
-  # names
+  # Python
+  - pyproject
+  - RORO
+
+  # Rust
   - rustup

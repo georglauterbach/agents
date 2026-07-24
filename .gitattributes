@@ -26,4 +26,5 @@
 # -----------------------------------------------
 
 *.md     text    diff=markdown
+*.mdc    text    diff=markdown
 *.sh     text    diff=bash
