@@ -5,20 +5,19 @@ alwaysApply: true
 
 # Core Behavioral Guidelines
 
-## Dialogue Language
+## Dialogues
 
-- do not use hollow affirmations or similar flattery
-- get straight to the point and be precise
 - use American English
-- use the following key words and imperatives where appropriate \[[RFC2119]\]
+- do not use hollow affirmations or flattery, be precise
+- use the following key words and imperatives where appropriate ([RFC2119](https://datatracker.ietf.org/doc/html/rfc2119))
 
-| Keyword        | Definition |
-| :------------- | :--------- |
-| **MUST**       | The definition is an absolute requirement of the specification |
-| **SHOULD**     | There may exist valid reasons to ignore a particular item, but the full implications must be understood and carefully weighed before choosing a different course |
-| **MAY**        | An item is truly optional |
-| **SHOULD NOT** | There may exist valid reasons when the particular behavior is acceptable or even useful, but the full implications should be understood and the case carefully weighed before implementing any behavior described with this label |
-| **MUST NOT**   | The definition is an absolute prohibition of the specification |
+| Keyword    | Definition |
+| :--------- | :--------- |
+| MUST       | The definition is an absolute requirement of the specification |
+| SHOULD     | There may exist valid reasons to ignore a particular item, but the full implications must be understood and carefully weighed before choosing a different course |
+| MAY        | An item is truly optional |
+| SHOULD NOT | There may exist valid reasons when the particular behavior is acceptable or even useful, but the full implications should be understood and the case carefully weighed before implementing any behavior described with this label |
+| MUST NOT   | The definition is an absolute prohibition of the specification |
 
 ## User Requests
 
@@ -27,23 +26,26 @@ alwaysApply: true
 
 ## Style
 
-- stick to the existing style of the project that you are working on unless you are specifically requested to use another style
+- stick to the existing style of the project
 - use language-specific best practices if no project exists yet
 - use lowercase with underscores for directories and files (e.g., `scanners/port_scanner.rs`)
 
 ## Extra Tools
 
-The following table provides a set of common tools that you can use (and potentially what they are preferred over). Use the preferred tools, if they are installed.
+You may use the following tools, if they are installed:
 
-| Purpose            | Preferred Tool | Instead of     | Documentation                           |
-| :----------------- | :------------- | :------------- | :-------------------------------------- |
-| Finding files      | `fd`           | `find`         | <https://github.com/sharkdp/fd>         |
-| Fuzzy finder       | `fzf`          |                | <https://github.com/junegunn/fzf>       |
-| JSON parsing       | `jaq`          | `jq`           | <https://github.com/01mf02/jaq>         |
-| Searching in files | `rg`           | `grep`         | <https://github.com/BurntSushi/ripgrep> |
+| Purpose            | Tool  | Instead of | Documentation                           |
+| :----------------- | :---- | :--------- | :-------------------------------------- |
+| Finding files      | `fd`  | `find`     | <https://github.com/sharkdp/fd>         |
+| Fuzzy finder       | `fzf` |            | <https://github.com/junegunn/fzf>       |
+| JSON parsing       | `jaq` | `jq`       | <https://github.com/01mf02/jaq>         |
+| Searching in files | `rg`  | `grep`     | <https://github.com/BurntSushi/ripgrep> |
 
-## Containers
+## Technologies
 
+### Containers
+
+- OCI = Open Container Initiative
 - you MUST only write OCI-compliant container definitions
 
 ## (Programming) Language Guidelines
@@ -53,12 +55,11 @@ The following table provides a set of common tools that you can use (and potenti
 - always follow a specific language's API guidelines, best practices & conventions
 - write clear, technical, concise, and idiomatic code with accurate documentation and examples
 - prioritize modularity, clean code organization, and efficient resource management; avoid code duplication
-- ensure code is well-documented, but avoid useless documentation
+- ensure code is well-documented; avoid useless documentation
 - use functional, declarative programming
-- use functions and modules to encapsulate reusable logic
-- write code with safety, concurrency, and performance in mind
-- use descriptive and expressive variable names that convey intent with auxiliary verbs (e.g., `is_encrypted`, `has_valid_signature`)
-- match the [EditorConfig] configuration in `.editorconfig` files
+- write code with safety and performance in mind
+- use descriptive and expressive variable names that convey intent (e.g., `has_valid_signature`)
+- match the [EditorConfig](https://editorconfig.org/) configuration from `.editorconfig` files
 - rely on dependency injection for shared resources where appropriate
 
 ### Security
@@ -66,25 +67,13 @@ The following table provides a set of common tools that you can use (and potenti
 - use secure defaults (e.g., TLSv1.2+, strong cipher suites)
 - sanitize all external inputs, never invoke shell commands with unsanitized strings
 - ensure secrets are loaded from secure stores or environment variables
-- refer to OWASP and NIST SP 800-115 guidelines for best practices in API-driven security tooling
+- refer to OWASP and NIST guidelines for security-relevant best practices
 
 ### Paradigms
 
 #### Asynchronous Programming
 
 - synchronous code is for CPU-bound tasks, asynchronous code for I/O-bound tasks
-- use sync code where async is not needed
 - avoid blocking operations inside async functions; offload to dedicated blocking threads if necessary
-- favor structured concurrency: prefer scoped tasks and clean cancellation paths.
+- favor structured concurrency: prefer scoped tasks and clean cancellation paths
 - implement timeouts, retries, and backoff strategies for robust async operations
-
-## Glossary & Acronyms
-
-| Acronym / Word | Description               |
-| :------------- | :------------------------ |
-| **OCI**        | Open Container Initiative |
-
-[//]: # (Links)
-
-[RFC2119]: https://datatracker.ietf.org/doc/html/rfc2119
-[EditorConfig]: https://editorconfig.org/

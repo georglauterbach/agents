@@ -8,6 +8,6 @@ alwaysApply: false
 
 ## Key Principles
 
-- if `uv` is installed, use it instead of `pip`.
+- if `uv` is installed, use it instead of `pip`
 - favor named exports for commands and utility functions
 - follow the "Receive an Object, Return an Object" (RORO) pattern for all tool interfaces
