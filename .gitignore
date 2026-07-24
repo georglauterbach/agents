@@ -22,6 +22,7 @@ tmp/
 
 /rules/*
 !/rules/core.mdc
+!/rules/ponytail.mdc
 !/rules/lang-python.mdc
 !/rules/lang-rust.mdc
 !/rules/lang-shell.mdc
