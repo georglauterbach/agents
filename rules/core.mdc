@@ -50,7 +50,7 @@ When writing scripts, use programs that are available on all systems.
 
 ## (Programming) Language Guidelines
 
-- Ponytail's rules for structure and scope take precedency over rules from this file
+- Ponytail's rules for structure and scope take precedence over rules from this file
 - follow a specific language's API guidelines, best practices & conventions
 - write clear, technical, concise, and idiomatic code with accurate documentation and examples
 - prioritize modularity, clean code organization, and efficient resource management
