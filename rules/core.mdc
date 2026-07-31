@@ -5,42 +5,47 @@ alwaysApply: true
 
 # Core Behavioral Guidelines
 
-## Dialogues
+## Precedence
 
-- use precise American English without hollow affirmations or flattery
-- use the following key words and imperatives where appropriate ([RFC2119](https://datatracker.ietf.org/doc/html/rfc2119))
+When rules conflict, apply the highest applicable layer:
 
-| Keyword    | Definition |
-| :--------- | :--------- |
-| MUST       | The definition is an absolute requirement of the specification |
-| SHOULD     | There may exist valid reasons to ignore a particular item, but the full implications must be understood and carefully weighed before choosing a different course |
-| MAY        | An item is truly optional |
-| SHOULD NOT | There may exist valid reasons when the particular behavior is acceptable or even useful, but the full implications should be understood and the case carefully weighed before implementing any behavior described with this label |
-| MUST NOT   | The definition is an absolute prohibition of the specification |
+1. **Org/Compliance** (`org-*.mdc`): registry mirrors, internal tooling, policy
+2. **Ponytail** (`style-ponytail.mdc`): structure, scope, abstractions, dependencies, documentation
+3. **Language Rules** (`lang-*.mdc`): idioms and tooling when matching files are in context
+4. **Core** (this file): dialogue, defaults, tools, and gaps left by the layers above
 
-## User Requests
+## Dialogue
 
 - question user input and critically evaluate requests
 - suggest alternative or better solutions when appropriate rather than blindly following instructions
+- use precise American English without hollow affirmations or flattery
+- use the following key words and imperatives where appropriate ([RFC2119](https://datatracker.ietf.org/doc/html/rfc2119))
+
+|Keyword|Definition|
+|:-|:-|
+|MUST|The definition is an absolute requirement of the specification|
+|SHOULD|There may exist valid reasons to ignore a particular item, but the full implications must be understood and carefully weighed before choosing a different course|
+|MAY|An item is truly optional|
+|SHOULD NOT|There may exist valid reasons when the particular behavior is acceptable or even useful, but the full implications should be understood and the case carefully weighed before implementing any behavior described with this label|
+|MUST NOT|The definition is an absolute prohibition of the specification|
 
 ## Style
 
 - stick to the existing style of the project
-- use language-specific best practices if no project exists yet
 - for directory and file names, match the repository and language norms; prefer lowercase and underscores (e.g., `scanners/port_scanner.rs`)
 
 ## Extra Tools
 
-You may use the following tools, if they are installed:
+You MAY use the following tools for interactive agent work (search, exploration), if they are installed:
 
-| Purpose            | Tool  | Instead of | Documentation                           |
-| :----------------- | :---- | :--------- | :-------------------------------------- |
-| Finding files      | `fd`  | `find`     | <https://github.com/sharkdp/fd>         |
-| Fuzzy finder       | `fzf` |            | <https://github.com/junegunn/fzf>       |
-| JSON parsing       | `jaq` | `jq`       | <https://github.com/01mf02/jaq>         |
-| Searching in files | `rg`  | `grep`     | <https://github.com/BurntSushi/ripgrep> |
+|Purpose|Tool|Instead of|
+|:-|:-|:-|
+|Finding files|`fd`|`find`|
+|Fuzzy finder|`fzf`||
+|JSON parsing|`jaq`|`jq`|
+|Searching in files|`rg`|`grep`|
 
-When writing scripts, use programs that are available on all systems.
+When writing scripts or committed automation, use programs that are available on all target systems (do not require the tools from the table in scripts unless the project already depends on them).
 
 ## Technologies
 
@@ -50,15 +55,18 @@ When writing scripts, use programs that are available on all systems.
 
 ## (Programming) Language Guidelines
 
-- Ponytail's rules for structure and scope take precedence over rules from this file
-- follow a specific language's API guidelines, best practices & conventions
-- write clear, technical, concise, and idiomatic code with accurate documentation and examples
-- prioritize modularity, clean code organization, and efficient resource management
-- ensure code is well-documented but avoid useless documentation
+- follow a specific language's API guidelines, best practices & (naming) conventions
+- language-specific rules (`lang-*.mdc`) contain a section "Tooling" with a table of checks (linting, formatting, documentation, type checking); use a listed tool when the project configures it or it is installed
+- before treating changes as done, check linting, formatting and documentation
+- use descriptive and expressive variable names that convey intent
+- match existing [EditorConfig](https://editorconfig.org/) configurations from `.editorconfig` files
+- document public APIs accurately; skip documentation that only restates the code
 - write code with safety and performance in mind
-- use descriptive and expressive variable names that convey intent (e.g., `has_valid_signature`)
-- match the [EditorConfig](https://editorconfig.org/) configuration from `.editorconfig` files
 - use secure defaults
   - sanitize all external inputs, never invoke shell commands with unsanitized strings
   - ensure secrets are loaded from secure stores or environment variables
-  - refer to OWASP and NIST guidelines for security-relevant best practices
+- synchronous code is for CPU-bound tasks, asynchronous code for I/O-bound tasks
+  - avoid blocking operations inside async functions; offload to dedicated blocking threads if necessary
+  - favor structured concurrency: prefer scoped tasks and clean cancellation paths
+  - implement timeouts, retries, and backoff strategies for robust async operations
+  - prefer bounded channels for backpressure; handle capacity limits gracefully

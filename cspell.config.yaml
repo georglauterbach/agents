@@ -10,15 +10,26 @@ dictionaries:
 
 words:
   - agentic
+  - allowlist
+  - allowlisted
   - backpressure
+  - gitignored
+  - unrequested
   - unsanitized
+  - YAGNI
 
 ignoreWords:
   # Python
   - pyproject
+  - pytest
   - RORO
+  - ruff
 
   # Rust
   - clippy
+  - rustdoc
   - rustup
   - thiserror
+
+  # Shell
+  - shfmt

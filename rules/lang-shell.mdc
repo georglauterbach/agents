@@ -8,27 +8,29 @@ alwaysApply: false
 
 ## Key Principles
 
-- use `bash` 5+ by default; use `sh` where portability is a concern
+- use `bash` 5+ by default, and `sh` where portability is a concern
 - quote everything; use `""` when string-formatting or expanding variables, and `''` when using plain strings
 - avoid using `eval` or parsing human-output commands
-- use "screaming snake case" for variable names and "snake case" for function name
+- use `SCREAMING_SNAKE_CASE` for exported environment variables and constants; use `snake_case` for locals and function names
 - prefix private items with `_`
-- use curly braces and quotes (`"${X}"` instead of `$X`)
+- always use curly braces and quotes (`"${X}"` instead of `$X`)
+
+## Tooling
+
+|Check|Tool|Command|Notes|
+|:-|:-|:-|:-|
+|**Linting**|`shellcheck`|`shellcheck --check-sourced --color=auto --enable=all --external-sources --severity=style --source-path=SCRIPTDIR --wiki-link-count=5 <script>`|apply exceptions only where appropriate|
+|**Formatting**|`shfmt`|`shfmt --diff .`|reads its options from `.editorconfig`|
 
 ## `bash` vs. `sh`
 
 Ensure you use Bash idioms only when actually writing Bash code. The following table provides a brief, non-comprehensive comparison:
 
-| Property | `bash`                 | `sh`                      |
-| :------- | :--------------------- | :------------------------ |
-| Shebang  | `#! /usr/bin/env bash` | `#! /bin/sh`              |
-| `local`  | supported              | unsupported               |
-| `if ...` | `[[ ]]` or `test`      | `[ ]` or `test` or `case` |
-
-## Tooling
-
-- if `shellcheck` is installed, run `shellcheck --check-sourced --color=auto --enable=all --external-sources --severity=style --source-path=SCRIPTDIR --wiki-link-count=5` to check scripts
-- apply exceptions only where appropriate
+|Property|`bash`|`sh`|
+|:-|:-|:-|
+|Shebang|`#! /usr/bin/env bash`|`#! /bin/sh`|
+|`local`|supported|unsupported|
+|`if ...`|`[[ ]]` or `test`|`[ ]` or `test` or `case`|
 
 ## Paradigms
 

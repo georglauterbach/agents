@@ -4,9 +4,28 @@ This project provides rules to efficiently and safely develop software with agen
 
 ## Repository Layout
 
-| Path       | Purpose                                                 |
-| :--------- | :------------------------------------------------------ |
-| `.github/` | GitHub-related content like CI/CD, issues, etc.         |
-| `rules/`   | contains Agent "[rules](https://cursor.com/docs/rules)" |
+|Path|Purpose|
+|:-|:-|
+|`.github/`|GitHub-related content like CI/CD, issues, etc.|
+|`rules/`|contains Agent "[rules](https://cursor.com/docs/rules)"|
 
-Only rules explicitly allowed in `.gitignore` are committed and updated in this project. This allows for company-specific rules when symlinking the `rules/` directory without them accidentally being committed.
+## Rules
+
+Copy or symlink files from [`rules/`](./rules/) into `~/.cursor/rules/` (or a project's `.cursor/rules/`).
+
+|File|Apply|Role|
+|:-|:-|:-|
+|`core.mdc`|always|Precedence, dialogue, language and security defaults|
+|`style-ponytail.mdc`|always|Minimal diffs, YAGNI, no unrequested abstractions|
+|`lang-python.mdc`|globs|Python idioms and tooling|
+|`lang-rust.mdc`|globs|Rust idioms and tooling|
+|`lang-shell.mdc`|globs|Shell idioms and tooling|
+|`org-*.mdc`|local|Company overlays (not committed; see below)|
+
+### Precedence
+
+When rules conflict: **org / compliance → Ponytail → language rules → core**. See the Precedence section in `core.mdc`.
+
+### Company overlays
+
+Only rules explicitly allowlisted in [`.gitignore`](./.gitignore) are committed. Files matching `org-*.mdc` (for example `org-rohde_schwarz.mdc`) are expected to stay local when you symlink `rules/` into Cursor. Do not add them to the allowlist unless they are intentionally shared.

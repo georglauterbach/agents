@@ -10,31 +10,17 @@ alwaysApply: false
 
 - adhere to [Rust's naming conventions](https://rust-lang.github.io/api-guidelines/naming.html)
 - embrace Rust's ownership and type system
-- the standard library provides a great reference for best-practices
+- the standard library provides a great reference for best practices
 
 ## Tooling
 
 - use or create `rust-toolchain.toml` files
-- before treating Rust changes as done, check the general linting, formatting and documentation
 
-### General Linting
-
-- use `clippy` for general linting tasks
-- check against linting issues with `cargo clippy --quiet --bins --tests --benches --no-deps`
-- respect all lints defined in `Cargo.toml`
-- use `#[expect(...)]` instead of `#[allow(...)]`
-
-### Formatting
-
-- use `rustfmt` for formatting-related tasks
-- format the code with `cargo fmt --all`
-- check the formatting with `cargo fmt --all --quiet --message-format=human --check`
-
-### Documentation
-
-- use `cargo doc` for documentation-related tasks
-- check the documentation with `cargo doc --quiet --all-features --no-deps --document-private-items`
-- use intra-doc links
+|Check|Tool|Command|Notes|
+|:-|:-|:-|:-|
+|**Linting**|`clippy`|`cargo clippy --quiet --bins --tests --benches --no-deps -- -D warnings`|respect all lints defined in `Cargo.toml`; use `#[expect(...)]` instead of `#[allow(...)]`|
+|**Formatting**|`rustfmt`|`cargo fmt --all --quiet --message-format=human --check`||
+|**Documentation**|`rustdoc`|`RUSTDOCFLAGS="-D warnings" cargo doc --quiet --all-features --no-deps --document-private-items`|use intra-doc links; the flag turns broken links into errors|
 
 ## Paradigms
 
@@ -42,24 +28,14 @@ alwaysApply: false
 
 - embrace `Result` and `Option` for error handling
 - use `?` operator to propagate errors, especially in async functions
-- consider implementing custom error types using `::thiserror` for more descriptive errors
-- consider using `anyhow` for non-performance critical error handling
+- use `thiserror` or `anyhow` only if already in the project; do not add them by default
 
 ### Asynchronous Programming
 
-- synchronous code is for CPU-bound tasks, asynchronous code for I/O-bound tasks
-- avoid blocking operations inside async functions; offload to dedicated blocking threads if necessary
-- favor structured concurrency: prefer scoped tasks and clean cancellation paths
-- implement timeouts, retries, and backoff strategies for robust async operations
-
 - prefer `async fn` over `fn -> impl Future`
 - use `.await` responsibly, ensuring safe points for context switching
-- prefer bounded channels for backpressure; handle capacity limits gracefully
-- leverage [`tokio`] (an async runtime) for concurrency
+- follow the project's existing async runtime; do not add [`tokio`](https://docs.rs/crate/tokio/latest) (or another runtime) by default
+- when the project already uses tokio:
   - use `::tokio::sync::Mutex` and `::tokio::sync::RwLock` for shared state across tasks instead of their standard-library counterparts
   - use `::tokio::task::yield_now` to yield control in cooperative multitasking scenarios
   - write unit tests with `tokio::test` for async tests
-
-[//]: # (Links)
-
-[`tokio`]: https://docs.rs/crate/tokio/latest
