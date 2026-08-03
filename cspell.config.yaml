@@ -11,6 +11,7 @@ dictionaries:
   - softwareTerms
 
 words:
+  - allowlist
   - backpressure
   - cooldown
   - debuggee
