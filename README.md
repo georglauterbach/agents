@@ -2,13 +2,13 @@
 
 This project contains rules to efficiently and safely develop software with agents.
 
-Copy the rules from [`rules/`](./rules/) into `~/.cursor/rules/`, or symlink them:
+Create symbolic links to the rules you want to use:
 
-```sh
-mkdir -p ~/.cursor/rules
-ln -s /path/to/agents/rules/*.mdc ~/.cursor/rules/
+```bash
+mkdir -p "${HOME}/.cursor/rules"
+for FILE in rules/*.mdc; do
+  ln -fs "${FILE}" "${HOME}/.cursor/rules/$(basename "${FILE}")"
+done
 ```
 
-Linking the files individually keeps any rules you already have in `~/.cursor/rules/`; re-run the command after adding a rule. If that directory does not exist yet, you can symlink the whole `rules/` directory to it instead.
-
-Shared rules (`core`, `style-ponytail`, `lang-*`) are committed. Company-specific `org-*.mdc` files are gitignored on purpose so a symlinked `rules/` directory can hold local overlays without committing them. See [`AGENTS.md`](./AGENTS.md) for roles and precedence.
+Shared rules (`core`, `style-ponytail`, `lang-*`) are committed in this repository. Company-specific `org-*.mdc` files are ignored (via [`.gitignore`](./.gitignore)) on purpose so a symlinked `rules/` directory can hold local overlays without committing them. See [`AGENTS.md`](./AGENTS.md) for roles and precedence.
