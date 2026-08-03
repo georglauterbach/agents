@@ -1,6 +1,6 @@
 # agents - Agent Guide
 
-This project provides rules to efficiently and safely develop software with agents.
+This project contains rules to efficiently and safely develop software with agents.
 
 ## Repository Layout
 
