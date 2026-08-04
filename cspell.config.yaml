@@ -4,8 +4,8 @@ version: '0.2'
 import: [ cspell.user.config.yaml ]
 
 ignorePaths: []
-dictionaryDefinitions: []
 
+dictionaryDefinitions: []
 dictionaries:
   - en_US
   - softwareTerms
@@ -27,22 +27,33 @@ words:
   - worktrees
 
 ignoreWords:
+  # names
   - georg
   - lauterbach
   - georglauterbach
 
+  # Rust
   - clippy
   - lldb
   - rustc
   - rustdoc
   - rustup
 
+  # Shell
+  - pipefail
+  - shopt
+  - errexit
+
+  # Python
   - pyproject
   - pytest
   - ruff
+  - SCRIPTDIR
 
+  # Acronyms
   - PKCS11
 
+  # Miscellaneous
   - acpi
   - agentic
   - awww
