@@ -23,7 +23,7 @@ alwaysApply: false
 |:-|:-|:-|:-|
 |**Linting**|`ruff`|`ruff check`||
 |**Formatting**|`ruff`|`ruff format --check`|`ruff check --select I` checks import order|
-|**Type Checking**|`ty` or `mypy`|`ty check`|prefer the checker the project configures|
+|**Type Checking**|`ty`|`ty check`|prefer the checker the project configures|
 
 ## Paradigms
 

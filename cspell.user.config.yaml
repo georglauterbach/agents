@@ -1,2 +1,5 @@
 ---
-ignoreWords: []
+ignoreWords:
+  # lang-rust
+  - thiserror
+  - rustdocflags

@@ -24,6 +24,14 @@ alwaysApply: false
 
 ## Paradigms
 
+### Style
+
+- prefer `core` over `::std`
+- when no style is available yet or the style is incoherent
+  - prefix imports from external crates with `::` (i.e., `::tokio` instead of `tokio`)
+  - import modules and not their item (i.e. `::std::process` instead of `::std::process::ExitCode`, then use `process::ExitCode`) unless an item is very frequently used
+  - suffix trait imports that are not used by their name explicitly with `as _;` (i.e. `use ::std::error::Error as _;` instead of `use ::std::error::Error;`)
+
 ### Error Handling
 
 - embrace `Result` and `Option` for error handling

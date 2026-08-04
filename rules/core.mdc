@@ -31,7 +31,7 @@ When rules conflict, apply the highest applicable layer:
 
 ## Style
 
-- stick to the existing style of the project
+- stick to the existing style of the project if it is coherent
 - for directory and file names, match the repository and language norms; prefer lowercase and underscores (e.g., `scanners/port_scanner.rs`)
 
 ## Extra Tools
