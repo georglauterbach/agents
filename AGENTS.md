@@ -8,6 +8,7 @@ This project contains rules to efficiently and safely develop software with agen
 |:-|:-|
 |`.github/`|GitHub-related content like CI/CD, issues, etc.|
 |`rules/`|contains Agent "[rules](https://cursor.com/docs/rules)"|
+|`tools/`|contains information about different tools (like the Cursor CLI)|
 
 ## Rules
 

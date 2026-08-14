@@ -1,6 +1,8 @@
 # Agentic Development
 
-This project contains rules to efficiently and safely develop software with agents.
+This project contains rules, skills and general information about AI tools to efficiently and safely develop software agents.
+
+## Rules
 
 Create symbolic links to the rules you want to use:
 

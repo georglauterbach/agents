@@ -3,3 +3,6 @@ ignoreWords:
   # lang-rust
   - thiserror
   - rustdocflags
+
+  # miscellaneous
+  - bugbot
