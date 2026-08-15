@@ -1,0 +1,74 @@
+{
+  "permissions": {
+    "allow": [],
+    "deny": []
+  },
+  "version": 1,
+  "editor": {
+    "vimMode": false
+  },
+  "display": {
+    "showLineNumbers": true,
+    "showThinkingBlocks": true,
+    "showStatusIndicators": true,
+    "showStatusLineRunningTime": true,
+    "mode": "zen"
+  },
+  "notifications": true,
+  "hints": true,
+  "modelSlashCommands": true,
+  "rewind": true,
+  "channel": "prod",
+  "model": {
+    "modelId": "claude-opus-5",
+    "displayModelId": "claude-opus-5",
+    "displayName": "Opus 5 300K High",
+    "displayNameShort": "Opus 5 300K High",
+    "aliases": [],
+    "maxMode": false
+  },
+  "hasChangedDefaultModel": true,
+  "maxMode": false,
+  "modelParameters": {
+    "auto-smart": [
+      {
+        "id": "optimize_for",
+        "value": "balanced"
+      }
+    ],
+    "claude-opus-5": [
+      {
+        "id": "thinking",
+        "value": "true"
+      },
+      {
+        "id": "context",
+        "value": "300k"
+      },
+      {
+        "id": "effort",
+        "value": "high"
+      },
+      {
+        "id": "fast",
+        "value": "false"
+      }
+    ],
+    "grok-4.6": [
+      {
+        "id": "effort",
+        "value": "high"
+      },
+      {
+        "id": "fast",
+        "value": "false"
+      }
+    ],
+    "composer-2.5": [
+      {
+        "id": "fast",
+        "value": "false"
+      }
+    ]
+  }
+}
