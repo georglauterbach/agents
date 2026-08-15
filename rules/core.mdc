@@ -40,7 +40,7 @@ You MAY use the following tools for interactive agent work (search, exploration)
 
 |Purpose|Tool|Instead of|
 |:-|:-|:-|
-|Finding files|`fd`|`find`|
+|Finding files|`.project-index.yaml` (see `index-consult.mdc`), then `fd`|`find`|
 |Fuzzy finder|`fzf`||
 |JSON parsing|`jaq`|`jq`|
 |Searching in files|`rg`|`grep`|

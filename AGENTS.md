@@ -19,6 +19,8 @@ Copy or symlink files from [`rules/`](./rules/) into `~/.cursor/rules/` (or a pr
 |:-|:-|:-|
 |`core.mdc`|always|Precedence, dialogue, language and security defaults|
 |`style-ponytail.mdc`|always|Minimal diffs, YAGNI, no unrequested abstractions|
+|`index-consult.mdc`|always|Read `.project-index.yaml` first when locating files|
+|`index-maintain.mdc`|always|Keep `.project-index.yaml` current (modules, files, tags, summaries)|
 |`lang-python.mdc`|globs|Python idioms and tooling|
 |`lang-rust.mdc`|globs|Rust idioms and tooling|
 |`lang-shell.mdc`|globs|Shell idioms and tooling|

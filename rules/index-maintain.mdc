@@ -1,0 +1,45 @@
+---
+description: Maintain a Project Index in .project-index.yaml
+alwaysApply: false
+---
+
+# Maintain a Project Index in `.project-index.yaml`
+
+Keep a machine-readable map at the **repository root** so later agents can find the right files without a full-tree search.
+
+## When
+
+After adding, removing, renaming, or substantially changing a first-party source file, update the matching entries. A one-line fix that does not change a file's role MAY leave the index unchanged. If the file is missing, create it.
+
+## Scope
+
+Index first-party source, tests, and behavior-defining configuration. You MUST NOT index generated output, vendored dependencies, lockfiles, binaries, secrets, or `.project-index.yaml` itself.
+
+## Schema
+
+```yaml
+schema: 1
+modules:
+  - id: auth
+    path: src/auth/
+    summary: Authentication, sessions, and tokens
+    tags: [auth, session, jwt]
+    key_files:
+      - src/auth/session.py
+    files:
+      - path: src/auth/session.py
+        summary: Session store and cookie lifecycle
+        tags: [session, cookies]
+      - path: src/auth/jwt.py
+        summary: Issue and verify JWTs
+        tags: [jwt]
+```
+
+## Requirements
+
+- Group files into `modules` (directory or coherent subsystem). Each module MUST have `id`, `path`, `summary`, `tags`, `key_files`, and `files`.
+- Every indexed file MUST have `path` (repo-relative), a one-line `summary` of what it does, and `tags` (lowercase, hyphenated, reusable).
+- `key_files` MUST list the few files an agent SHOULD read first in that module (not every file).
+- Reuse tags across modules and files; prefer a small shared vocabulary (`cli`, `http`, `parse`, `test`) over unique phrases.
+- Remove entries for deleted paths. Fix `path` and module membership on rename.
+- Keep summaries factual; you MUST NOT copy secrets or large code excerpts into the index.

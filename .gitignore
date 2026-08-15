@@ -23,6 +23,8 @@
 
 /rules/*
 !/rules/core.mdc
+!/rules/index-consult.mdc
+!/rules/index-maintain.mdc
 !/rules/lang-python.mdc
 !/rules/lang-rust.mdc
 !/rules/lang-shell.mdc
