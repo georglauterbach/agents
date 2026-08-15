@@ -27,7 +27,7 @@ Copy or symlink files from [`rules/`](./rules/) into `~/.cursor/rules/` (or a pr
 
 ### Precedence
 
-When rules conflict: **org / compliance → Ponytail → language rules → core**. See the Precedence section in `core.mdc`.
+When rules conflict: **org / compliance → Ponytail → language rules → project index → core**. See the Precedence section in `core.mdc`.
 
 ### Company overlays
 
@@ -40,7 +40,7 @@ Copy or symlink skill directories from [`skills/`](./skills/) into `~/.cursor/sk
 ```bash
 mkdir -p "${HOME}/.cursor/skills"
 for DIR in skills/*/; do
-  ln -fs "$(realpath "${DIR}")" "${HOME}/.cursor/skills/$(basename "${DIR}")"
+  ln -fsn "$(realpath "${DIR}")" "${HOME}/.cursor/skills/$(basename "${DIR}")"
 done
 ```
 

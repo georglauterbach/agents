@@ -51,6 +51,7 @@ Required: `schema`, `generated_at_commit` (short `git rev-parse --short HEAD`), 
 - `paths` is always a list, even with one entry, and directories carry a trailing slash. A module MAY span several roots, which is how a subsystem and its separate test tree stay together.
 - `tags` belong on modules only. They carry concerns that no directory name shows, such as `telemetry` spread across several modules. Key files are discriminated by their `summary`.
 - summaries MUST NOT contain a colon followed by a space unless the whole value is quoted; a plain YAML scalar containing `: ` does not parse.
+- the file MUST begin with a `---` document start marker, which `yamllint` expects by default.
 
 ## Procedure
 
@@ -64,7 +65,6 @@ You MUST:
 6. Write the top-level `summary`: what the project is, and the one file or module to start from.
 7. Sort modules by their first path, `key_files` by `path`, and `tags` alphabetically, so regeneration produces a minimal diff.
 8. Stamp `generated_at_commit` last, from the commit you indexed.
-9. The YAML file MUST start with `---`
 
 You MUST keep summaries factual and MUST NOT copy secrets or large code excerpts into the index.
 

@@ -22,12 +22,9 @@
   "model": {
     "modelId": "claude-opus-5",
     "displayModelId": "claude-opus-5",
-    "displayName": "Opus 5 300K High",
-    "displayNameShort": "Opus 5 300K High",
     "aliases": [],
     "maxMode": false
   },
-  "hasChangedDefaultModel": true,
   "maxMode": false,
   "modelParameters": {
     "auto-smart": [

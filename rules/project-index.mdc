@@ -22,7 +22,7 @@ The index is optional. When it is absent, this rule does not apply: you MUST NOT
 ## Maintain
 
 - when you add, remove, rename, or change the role of a file the index covers, you MUST update the affected module entries in the same change
-- you MUST keep the file's existing shape: sorted entries, one-line summaries, reusable lowercase tags
+- you MUST keep the file's existing shape: leading `---`, sorted entries, one-line summaries, reusable lowercase tags
 - you MUST NOT copy secrets or large code excerpts into the index
 - for more than incremental upkeep — a first index, or a rebuild after a refactor — you SHOULD use the `project-index` skill
 

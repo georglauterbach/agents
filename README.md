@@ -1,15 +1,15 @@
 # Agentic Development
 
-This project contains rules, skills and general information about AI tools to efficiently and safely develop software agents.
+This project contains rules, skills and general information about AI tools to efficiently and safely develop software with agents.
 
 ## Rules
 
-Create symbolic links to the rules you want to use:
+Create symbolic links to the rules you want to use, from the repository root:
 
 ```bash
 mkdir -p "${HOME}/.cursor/rules"
 for FILE in rules/*.mdc; do
-  ln -fs "${FILE}" "${HOME}/.cursor/rules/$(basename "${FILE}")"
+  ln -fsn "$(realpath "${FILE}")" "${HOME}/.cursor/rules/$(basename "${FILE}")"
 done
 ```
 
@@ -17,12 +17,12 @@ Shared rules (`core`, `style-ponytail`, `project-index`, `lang-*`) are committed
 
 ## Skills
 
-Create symbolic links to the skills you want to use:
+Create symbolic links to the skills you want to use, from the repository root:
 
 ```bash
 mkdir -p "${HOME}/.cursor/skills"
-for DIR in skills/*; do
-  ln -fs "${DIR}" "${HOME}/.cursor/skills/$(basename "${DIR}")"
+for DIR in skills/*/; do
+  ln -fsn "$(realpath "${DIR}")" "${HOME}/.cursor/skills/$(basename "${DIR}")"
 done
 ```
 

@@ -1,11 +1,13 @@
 ---
 words:
   - hotspots
-  - lockfiles
 
 ignoreWords:
   # Cursor
   - bugbot
+
+  # shell
+  - realpath
 
   # lang-rust
   - thiserror
@@ -14,6 +16,10 @@ ignoreWords:
   # skills
   - glab
   - Gitea
+
+  # names
+  - rohde
+  - schwarz
 
   # miscellaneous
   - sonarlint
