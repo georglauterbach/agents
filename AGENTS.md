@@ -1,6 +1,6 @@
 # agents - Agent Guide
 
-This project contains rules to efficiently and safely develop software with agents.
+This project contains rules, skills and general information about AI tools to efficiently and safely develop software with agents.
 
 ## Repository Layout
 
@@ -35,16 +35,10 @@ Only rules explicitly allowlisted in [`.gitignore`](./.gitignore) are committed.
 
 ## Skills
 
-Copy or symlink skill directories from [`skills/`](./skills/) into `~/.cursor/skills/` (or a project's `.cursor/skills/`):
-
-```bash
-mkdir -p "${HOME}/.cursor/skills"
-for DIR in skills/*/; do
-  ln -fsn "$(realpath "${DIR}")" "${HOME}/.cursor/skills/$(basename "${DIR}")"
-done
-```
+Copy or symlink skill directories from [`skills/`](./skills/) into `~/.cursor/skills/` (or a project's `.cursor/skills/`); [`README.md`](./README.md#skills) carries the command.
 
 |Directory|When to use|
 |:-|:-|
 |`git-review-mr/`|Review a merge request or pull request from a URI (MCP, else CLI)|
 |`project-index/`|Build or rebuild `.project-index.yaml` for a repository|
+|`repo-audit/`|Audit a repository for consistency, correctness, soundness and style problems|

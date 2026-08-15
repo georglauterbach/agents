@@ -9,7 +9,7 @@ lang_rust_enabled: false
 lang_shell_enabled: false
 project_changelog_enabled: false
 project_copyright_holder: Georg Lauterbach
-project_description: This project contains rules to efficiently and safely develop
-    software with agents.
+project_description: This project contains rules, skills and general information about
+    AI tools to efficiently and safely develop software with agents.
 project_license: MIT
 project_name: agents
