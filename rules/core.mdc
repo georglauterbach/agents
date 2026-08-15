@@ -12,7 +12,8 @@ When rules conflict, you MUST apply the highest applicable layer:
 1. **Org/Compliance** (`org-*.mdc`): registry mirrors, internal tooling, policy
 2. **Ponytail** (`style-ponytail.mdc`): structure, scope, abstractions, dependencies, documentation
 3. **Language Rules** (`lang-*.mdc`): idioms and tooling when matching files are in context
-4. **Core** (this file): dialogue, defaults, tools, and gaps left by the layers above
+4. **Project Index** (`project-index.mdc`): where to look for files, and upkeep of `.project-index.yaml`
+5. **Core** (this file): dialogue, defaults, tools, and gaps left by the layers above
 
 ## Dialogue
 
@@ -42,7 +43,7 @@ You MAY use the following tools for interactive agent work (search, exploration)
 
 |Purpose|Tool|Instead of|
 |:-|:-|:-|
-|Finding files|`.project-index.yaml` (see `index-consult.mdc`), then `fd`|`find`|
+|Finding files|`fd`|`find`|
 |Fuzzy finder|`fzf`||
 |JSON parsing|`jaq`|`jq`|
 |Searching in files|`rg`|`grep`|

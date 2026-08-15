@@ -1,0 +1,29 @@
+---
+description: Consult and Maintain a Project Index in .project-index.yaml
+alwaysApply: true
+---
+
+# Project Index
+
+`.project-index.yaml` at the repository root maps modules, key files, tags and summaries so agents can locate relevant files without a full-tree search.
+
+The index is optional. When it is absent, this rule does not apply: you MUST NOT create one as a side effect of another task. The `project-index` skill builds it when the user wants one.
+
+## Consult
+
+- when locating files and the index exists, you MUST read it before `fd`, glob, or a repository-wide `rg`
+- you SHOULD read the top-level `summary` first, then match the task to module `summary` and `tags`, then open the matching `key_files`
+- you MAY widen the search with `fd` / `rg` (see `core.mdc` Extra Tools) at any time
+- when `generated_at_commit` does not match `HEAD`, the index may lag the working tree: you MUST NOT treat a miss as authoritative, and MUST widen the search instead
+- `git diff --name-only <generated_at_commit>..HEAD` tells you whether that drift touched the paths you care about; you SHOULD run it before trusting an index that lags
+- the index is a map, not a spec: you MUST confirm behavior in the source you open
+- you MUST NOT invent modules or files that are absent from both the index and the working tree
+
+## Maintain
+
+- when you add, remove, rename, or change the role of a file the index covers, you MUST update the affected module entries in the same change
+- you MUST keep the file's existing shape: sorted entries, one-line summaries, reusable lowercase tags
+- you MUST NOT copy secrets or large code excerpts into the index
+- for more than incremental upkeep — a first index, or a rebuild after a refactor — you SHOULD use the `project-index` skill
+
+`style-ponytail.mdc` outranks this rule: you MUST NOT grow a small change into a large index rewrite.

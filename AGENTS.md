@@ -19,11 +19,10 @@ Copy or symlink files from [`rules/`](./rules/) into `~/.cursor/rules/` (or a pr
 |:-|:-|:-|
 |`core.mdc`|always|Precedence, dialogue, language and security defaults|
 |`style-ponytail.mdc`|always|Minimal diffs, YAGNI, no unrequested abstractions|
-|`index-consult.mdc`|always|Read `.project-index.yaml` first when locating files|
-|`index-maintain.mdc`|always|Keep `.project-index.yaml` current (modules, files, tags, summaries)|
 |`lang-python.mdc`|globs|Python idioms and tooling|
 |`lang-rust.mdc`|globs|Rust idioms and tooling|
 |`lang-shell.mdc`|globs|Shell idioms and tooling|
+|`project-index.mdc`|always|Consult and maintain `.project-index.yaml`, when a project has one|
 |`org-*.mdc`|local|Company overlays (not committed; see below)|
 
 ### Precedence
@@ -48,3 +47,4 @@ done
 |Directory|When to use|
 |:-|:-|
 |`git-review-mr/`|Review a merge request or pull request from a URI (MCP, else CLI)|
+|`project-index/`|Build or rebuild `.project-index.yaml` for a repository|
