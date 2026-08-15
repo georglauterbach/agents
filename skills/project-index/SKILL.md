@@ -31,6 +31,7 @@ The index MUST stay readable in one pass, roughly 200 lines. When a repository i
 You MUST index **modules and their key files only**; you MUST NOT list every file. Broad search covers the long tail, and an exhaustive list goes stale faster than it helps.
 
 ```yaml
+---
 schema: 1
 generated_at_commit: 4f2a1c9
 summary: Service that issues and validates API credentials; start at src/main.py
@@ -63,6 +64,7 @@ You MUST:
 6. Write the top-level `summary`: what the project is, and the one file or module to start from.
 7. Sort modules by their first path, `key_files` by `path`, and `tags` alphabetically, so regeneration produces a minimal diff.
 8. Stamp `generated_at_commit` last, from the commit you indexed.
+9. The YAML file MUST start with `---`
 
 You MUST keep summaries factual and MUST NOT copy secrets or large code excerpts into the index.
 
