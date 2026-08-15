@@ -15,10 +15,10 @@ You MUST discover MCP tool schemas with `GetMcpTools` before the first `CallMcpT
 
 1. `get_merge_request` — title, description, source/target branches, draft, head SHA, pipeline id, web URL.
 2. In parallel:
-   - `get_merge_request_diffs` with `compact: false` (default `true` truncates hunks). `per_page` 20; increment `page` until a page has fewer than `per_page` items.
-   - `mr_discussions` and/or `get_merge_request_notes` (paginate). You MUST treat unresolved threads as already-raised findings.
-   - `get_merge_request_approval_state`
-   - `list_merge_request_versions` when inline comments may be posted (need `diff_refs`)
+    - `get_merge_request_diffs` with `compact: false` (default `true` truncates hunks). `per_page` 20; increment `page` until a page has fewer than `per_page` items.
+    - `mr_discussions` and/or `get_merge_request_notes` (paginate). You MUST treat unresolved threads as already-raised findings.
+    - `get_merge_request_approval_state`
+    - `list_merge_request_versions` when inline comments may be posted (need `diff_refs`)
 3. If a pipeline id is present: `get_pipeline`, then `list_pipeline_jobs` with `scope` `failed` when the pipeline is not success.
 
 For surrounding code not in the hunk, `get_file_contents` with `ref` = source branch. You SHOULD prefer the local workspace when that remote and branch are already checked out.
