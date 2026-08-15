@@ -15,23 +15,23 @@ https://<host>/<owner>/<repo>/pulls/<number>
 
 ### General
 
-Discover MCP tool schemas with `GetMcpTools` before the first `CallMcpTool` call. Do not assume tool names; look up tools that cover PR metadata, files/diff, comments, reviews, and commit statuses.
+You MUST discover MCP tool schemas with `GetMcpTools` before the first `CallMcpTool` call. You MUST NOT assume tool names; look up tools that cover PR metadata, files/diff, comments, reviews, and commit statuses.
 
 ### Load Sequence
 
-After discovering schemas, load in parallel where the tools allow:
+After discovering schemas, you SHOULD load in parallel where the tools allow:
 
 1. PR metadata — title, body, base/head branches, draft, head SHA, url, mergeable.
 2. Files and diff — full hunks; paginate until a short page.
-3. Issue comments and review comments. Treat unresolved review threads as already-raised findings.
+3. Issue comments and review comments. You MUST treat unresolved review threads as already-raised findings.
 4. Reviews / approval state.
 5. Commit statuses or Actions for the head SHA.
 
-For surrounding code not in the hunk, fetch the file at the head ref. Prefer the local workspace when that remote and branch are already checked out.
+For surrounding code not in the hunk, fetch the file at the head ref. You SHOULD prefer the local workspace when that remote and branch are already checked out.
 
 ## CLI Fallback
 
-When no `*gitea*` MCP is available and the Gitea CLI `tea` is installed. Pass `--repo <owner>/<repo>`. Pass `--login <name>` for the login that matches this host (`tea logins`). Do not infer the repo from `$PWD`.
+When no `*gitea*` MCP is available and the Gitea CLI `tea` is installed. Pass `--repo <owner>/<repo>`. Pass `--login <name>` for the login that matches this host (`tea logins`). You MUST NOT infer the repo from `$PWD`.
 
 ```
 tea pr <number> --repo <owner>/<repo> --login <login> --comments --output json \
@@ -48,11 +48,11 @@ GET /api/v1/repos/<owner>/<repo>/issues/<number>/comments
 GET /api/v1/repos/<owner>/<repo>/statuses/<head_sha>
 ```
 
-If `tea` exposes an `api` subcommand, use it for those paths. Otherwise stop and ask before `curl`.
+If `tea` exposes an `api` subcommand, you SHOULD use it for those paths. Otherwise you MUST stop and ask before `curl`.
 
 ## Inline Comments
 
-Post only when the user explicitly asks. Prefer MCP. Use CLI/API only when MCP is absent. Do not call `tea pr approve` / `tea pr reject` as part of posting.
+You MUST post only when the user explicitly asks. You SHOULD prefer MCP; you MUST use the CLI/API only when MCP is absent. You MUST NOT call `tea pr approve` / `tea pr reject` as part of posting.
 
 - Known line: POST `/api/v1/repos/<owner>/<repo>/pulls/<number>/reviews` with `event` `COMMENT` (not approve/reject):
 
@@ -72,6 +72,6 @@ Post only when the user explicitly asks. Prefer MCP. Use CLI/API only when MCP i
 
 - Added or modified line in the new file: `new_position` (1-based).
 - Deleted line only: `old_position` instead of `new_position`.
-- Unknown line: `tea comment <number> --repo <owner>/<repo> --login <login>` with the body as the argument if `tea` accepts it; otherwise POST `/api/v1/repos/<owner>/<repo>/issues/<number>/comments` with `{"body":"..."}`. Do not guess a position.
+- Unknown line: `tea comment <number> --repo <owner>/<repo> --login <login>` with the body as the argument if `tea` accepts it; otherwise POST `/api/v1/repos/<owner>/<repo>/issues/<number>/comments` with `{"body":"..."}`. You MUST NOT guess a position.
 
-Keep each comment to one finding. Quote the behavior, not a lecture.
+You MUST keep each comment to one finding. Quote the behavior, not a lecture.

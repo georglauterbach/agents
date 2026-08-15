@@ -8,42 +8,42 @@ alwaysApply: false
 
 ## Key Principles
 
-- adhere to [Rust's naming conventions](https://rust-lang.github.io/api-guidelines/naming.html)
-- embrace Rust's ownership and type system
+- you MUST adhere to [Rust's naming conventions](https://rust-lang.github.io/api-guidelines/naming.html)
+- you SHOULD embrace Rust's ownership and type system
 - the standard library provides a great reference for best practices
 
 ## Tooling
 
-- use or create `rust-toolchain.toml` files
+- you SHOULD use or create `rust-toolchain.toml` files
 
 |Check|Tool|Command|Notes|
 |:-|:-|:-|:-|
-|**Linting**|`clippy`|`cargo clippy --quiet --bins --tests --benches --no-deps -- -D warnings`|respect all lints defined in `Cargo.toml`; use `#[expect(...)]` instead of `#[allow(...)]`|
+|**Linting**|`clippy`|`cargo clippy --quiet --bins --tests --benches --no-deps -- -D warnings`|you MUST respect all lints defined in `Cargo.toml`; you MUST use `#[expect(...)]` instead of `#[allow(...)]`|
 |**Formatting**|`rustfmt`|`cargo fmt --all --quiet --message-format=human --check`||
-|**Documentation**|`rustdoc`|`RUSTDOCFLAGS="-D warnings" cargo doc --quiet --all-features --no-deps --document-private-items`|use intra-doc links; the flag turns broken links into errors|
+|**Documentation**|`rustdoc`|`RUSTDOCFLAGS="-D warnings" cargo doc --quiet --all-features --no-deps --document-private-items`|you SHOULD use intra-doc links; the flag turns broken links into errors|
 
 ## Paradigms
 
 ### Style
 
-- prefer `core` over `::std`
-- when no style is available yet or the style is incoherent
+- you SHOULD prefer `core` over `::std`
+- when no style is available yet or the style is incoherent, you MUST
   - prefix imports from external crates with `::` (i.e., `::tokio` instead of `tokio`)
   - import modules and not their item (i.e. `::std::process` instead of `::std::process::ExitCode`, then use `process::ExitCode`) unless an item is very frequently used
   - suffix trait imports that are not used by their name explicitly with `as _;` (i.e. `use ::std::error::Error as _;` instead of `use ::std::error::Error;`)
 
 ### Error Handling
 
-- embrace `Result` and `Option` for error handling
-- use `?` operator to propagate errors, especially in async functions
-- use `thiserror` or `anyhow` only if already in the project; do not add them by default
+- you MUST use `Result` and `Option` for error handling
+- you SHOULD use the `?` operator to propagate errors, especially in async functions
+- you MAY use `thiserror` or `anyhow` if they are already in the project; you MUST NOT add them by default
 
 ### Asynchronous Programming
 
-- prefer `async fn` over `fn -> impl Future`
-- use `.await` responsibly, ensuring safe points for context switching
-- follow the project's existing async runtime; do not add [`tokio`](https://docs.rs/crate/tokio/latest) (or another runtime) by default
-- when the project already uses tokio:
+- you SHOULD prefer `async fn` over `fn -> impl Future`
+- you MUST use `.await` responsibly, ensuring safe points for context switching
+- you MUST follow the project's existing async runtime; you MUST NOT add [`tokio`](https://docs.rs/crate/tokio/latest) (or another runtime) by default
+- when the project already uses tokio, you MUST
   - use `::tokio::sync::Mutex` and `::tokio::sync::RwLock` for shared state across tasks instead of their standard-library counterparts
   - use `::tokio::task::yield_now` to yield control in cooperative multitasking scenarios
   - write unit tests with `tokio::test` for async tests
