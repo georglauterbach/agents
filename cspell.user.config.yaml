@@ -1,8 +1,19 @@
 ---
+words:
+  - hotspots
+
 ignoreWords:
+  # Cursor
+  - bugbot
+
   # lang-rust
   - thiserror
   - rustdocflags
 
+  # skills
+  - glab
+  - Gitea
+
   # miscellaneous
-  - bugbot
+  - sonarlint
+  - sonarqube

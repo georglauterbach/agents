@@ -8,6 +8,7 @@ This project contains rules to efficiently and safely develop software with agen
 |:-|:-|
 |`.github/`|GitHub-related content like CI/CD, issues, etc.|
 |`rules/`|contains Agent "[rules](https://cursor.com/docs/rules)"|
+|`skills/`|contains Agent "[skills](https://cursor.com/docs/skills)"|
 |`tools/`|contains information about different tools (like the Cursor CLI)|
 
 ## Rules
@@ -30,3 +31,18 @@ When rules conflict: **org / compliance → Ponytail → language rules → core
 ### Company overlays
 
 Only rules explicitly allowlisted in [`.gitignore`](./.gitignore) are committed. Files matching `org-*.mdc` (for example `org-rohde_schwarz.mdc`) are expected to stay local when you symlink `rules/` into Cursor. Do not add them to the allowlist unless they are intentionally shared.
+
+## Skills
+
+Copy or symlink skill directories from [`skills/`](./skills/) into `~/.cursor/skills/` (or a project's `.cursor/skills/`):
+
+```bash
+mkdir -p "${HOME}/.cursor/skills"
+for DIR in skills/*/; do
+  ln -fs "$(realpath "${DIR}")" "${HOME}/.cursor/skills/$(basename "${DIR}")"
+done
+```
+
+|Directory|When to use|
+|:-|:-|
+|`git-review-mr/`|Review a merge request or pull request from a URI (MCP, else CLI)|
