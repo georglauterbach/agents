@@ -39,5 +39,5 @@ Copy or symlink skill directories from [`skills/`](./skills/) into `~/.cursor/sk
 |Directory|When to use|
 |:-|:-|
 |`git-review-mr/`|Review a merge request or pull request from a URI (MCP, else CLI)|
+|`project-audit/`|Audit a project for consistency, correctness, soundness and style problems|
 |`project-index/`|Build or rebuild `.project-index.yaml` for a repository|
-|`repo-audit/`|Audit a repository for consistency, correctness, soundness and style problems|
