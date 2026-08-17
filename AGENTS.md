@@ -22,12 +22,11 @@ Copy or symlink files from [`rules/`](./rules/) into `~/.cursor/rules/` (or a pr
 |`lang-python.mdc`|globs|Python idioms and tooling|
 |`lang-rust.mdc`|globs|Rust idioms and tooling|
 |`lang-shell.mdc`|globs|Shell idioms and tooling|
-|`project-index.mdc`|always|Consult and maintain `.project-index.yaml`, when a project has one|
 |`org-*.mdc`|local|Company overlays (not committed; see below)|
 
 ### Precedence
 
-When rules conflict: **org / compliance → Ponytail → language rules → project index → core**. See the Precedence section in `core.mdc`.
+When rules conflict: **org / compliance → Ponytail → language rules → core**. See the Precedence section in `core.mdc`.
 
 ### Company overlays
 

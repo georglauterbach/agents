@@ -6,7 +6,7 @@ license: MIT
 
 # Build a Project Index
 
-Write `.project-index.yaml` at the repository root. Agents read it first when locating files (see the `project-index.mdc` rule); it is a map, never a specification.
+Write `.project-index.yaml` at the repository root, then point agents at it from `AGENTS.md`. It is a map, never a specification.
 
 ## When Not To Build One
 
@@ -67,6 +67,22 @@ You MUST:
 8. Stamp `generated_at_commit` last, from the commit you indexed.
 
 You MUST keep summaries factual and MUST NOT copy secrets or large code excerpts into the index.
+
+## Pointing Agents At It
+
+An index nothing reads is dead weight, and no rule announces it. You MUST add a `Project Index` section to the repository's root `AGENTS.md`, verbatim:
+
+```markdown
+## Project Index
+
+`.project-index.yaml` maps modules, key files and tags so you can locate files without a full-tree search.
+
+- you MUST read it before `fd`, glob, or a repository-wide `rg`; it is a map, not a spec, so you MUST confirm behavior in the source you open
+- when `generated_at_commit` does not match `HEAD` the index may lag the working tree: `git diff --name-only <generated_at_commit>..HEAD` shows the drift, and you MUST widen the search rather than trust a miss
+- when you add, remove, rename, or change the role of a file the index covers, you MUST update the affected module entries in the same change
+```
+
+When the section is already there, leave it alone. When the repository has no root `AGENTS.md`, or the index stays local rather than committed (see below), you MUST NOT edit a tracked `AGENTS.md`; ask the user instead.
 
 ## Rebuilding
 

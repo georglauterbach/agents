@@ -57,7 +57,7 @@ You MUST cite SonarQube findings that overlap the diff. If no project or analysi
 
 ## Review
 
-You MUST apply rule precedence: **org / compliance → Ponytail → language rules → project index → core**.
+You MUST apply rule precedence: **org / compliance → Ponytail → language rules → core**.
 
 If a review intent is provided by the user, you MUST judge the diff against this intent.
 

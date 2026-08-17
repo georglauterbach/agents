@@ -17,7 +17,7 @@ With no argument, the subject is the whole working tree of the current repositor
 
 Before reading source, you MUST learn what the project is and which checks it configures:
 
-1. `.project-index.yaml`, when it exists — the module map, read first per `project-index.mdc`
+1. `.project-index.yaml`, when it exists — the module map, read first
 2. `AGENTS.md`, `README.md`, and `CONTRIBUTING.md` — the stated intent you audit the tree against
 3. `.editorconfig` and tool configuration (`pyproject.toml`, `Cargo.toml`, `cspell.config.yaml`, `.gitignore`, CI workflows) — the project's own rules
 
@@ -41,7 +41,7 @@ When the user declines, or a tool is missing, the audit proceeds as a reading pa
 
 ## Dimensions
 
-You MUST apply rule precedence: **org / compliance → Ponytail → language rules → project index → core**. You MUST audit in this order, most important first:
+You MUST apply rule precedence: **org / compliance → Ponytail → language rules → core**. You MUST audit in this order, most important first:
 
 1. **Security**: secrets in tracked files, unsanitized external input, unsafe shell, missing authorization, public registries where org rules forbid them
 2. **Correctness and soundness**: broken edge cases, unhandled errors, wrong invariants, blocking calls on async paths, unreachable or dead code

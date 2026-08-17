@@ -13,7 +13,7 @@ for FILE in rules/*.mdc; do
 done
 ```
 
-Shared rules (`core`, `style-ponytail`, `project-index`, `lang-*`) are committed in this repository. Company-specific `org-*.mdc` files are ignored (via [`.gitignore`](./.gitignore)) on purpose so a symlinked `rules/` directory can hold local overlays without committing them. See [`AGENTS.md`](./AGENTS.md) for roles and precedence.
+Shared rules (`core`, `style-ponytail`, `lang-*`) are committed in this repository. Company-specific `org-*.mdc` files are ignored (via [`.gitignore`](./.gitignore)) on purpose so a symlinked `rules/` directory can hold local overlays without committing them. See [`AGENTS.md`](./AGENTS.md) for roles and precedence.
 
 ## Skills
 
