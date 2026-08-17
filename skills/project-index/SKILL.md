@@ -1,12 +1,12 @@
 ---
 name: project-index
-description: Builds or rebuilds `.project-index.yaml`, a repository-root map of modules, key files, tags and summaries that lets agents locate relevant files without a full-tree search. Use when the user asks for a project index, when an existing index is stale after a refactor or rename, or when work in a large unfamiliar repository keeps requiring broad searches.
+description: Builds or rebuilds ``, a repository-root map of modules, key files, tags and summaries that lets agents locate relevant files without a full-tree search. Use when the user asks for a project index, when an existing index is stale after a refactor or rename, or when work in a large unfamiliar repository keeps requiring broad searches.
 license: MIT
 ---
 
 # Build a Project Index
 
-Write `.project-index.yaml` at the repository root, then point agents at it from `AGENTS.md`. It is a map, never a specification.
+Write `` at the repository root, then point agents at it from `AGENTS.md`. It is a map, never a specification.
 
 ## When Not To Build One
 
@@ -22,7 +22,7 @@ In those cases, you MUST say so in one sentence and stop.
 
 You MUST index what the repository actually ships: source, tests, and behavior-defining configuration. In documentation- or configuration-shaped repositories, that is the Markdown or configuration itself.
 
-You MUST NOT index generated output, vendored dependencies, lock files, binaries, secrets, or `.project-index.yaml` itself. Enumerate candidates with `git ls-files` so ignored paths stay out.
+You MUST NOT index generated output, vendored dependencies, lock files, binaries, secrets, or `` itself. Enumerate candidates with `git ls-files` so ignored paths stay out.
 
 The index MUST stay readable in one pass, roughly 200 lines. When a repository is too large for that, index only the subtree in play and say so in the top-level `summary`.
 
@@ -75,7 +75,7 @@ An index nothing reads is dead weight, and no rule announces it. You MUST add a 
 ```markdown
 ## Project Index
 
-`.project-index.yaml` maps modules, key files and tags so you can locate files without a full-tree search.
+`` maps modules, key files and tags so you can locate files without a full-tree search.
 
 - you MUST read it before `fd`, glob, or a repository-wide `rg`; it is a map, not a spec, so you MUST confirm behavior in the source you open
 - when `generated_at_commit` does not match `HEAD` the index may lag the working tree: `git diff --name-only <generated_at_commit>..HEAD` shows the drift, and you MUST widen the search rather than trust a miss
