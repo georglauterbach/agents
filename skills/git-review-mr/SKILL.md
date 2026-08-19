@@ -91,11 +91,11 @@ You MUST lead with the verdict, then a compact table. You MUST sort findings hig
 
 ### Findings
 
-|Severity|Location|Finding|
-|:-|:-|:-|
-|Blocking|`path:line`|...|
-|Suggestion|`path:line`|...|
-|Note|`path:line`|...|
+|ID|Severity|Location|Finding|
+|:-|:-|:-|:-|
+|0|Blocking|`path:line`|...|
+|1|Suggestion|`path:line`|...|
+|2|Note|`path:line`|...|
 ```
 
 - **Approve**: No blocking findings.
