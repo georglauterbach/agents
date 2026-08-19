@@ -88,7 +88,6 @@ You MUST lead with the verdict, then a compact table. You MUST sort findings hig
 **Verdict:** Approve | Request Changes | Comment
 **Why:** <one sentence>
 **Pipeline:** <status or unknown>
-**Approvals:** <satisfied / missing>
 
 ### Findings
 
