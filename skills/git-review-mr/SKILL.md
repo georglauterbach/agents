@@ -43,18 +43,6 @@ You SHOULD load, in parallel where possible:
 
 If the forge denies access, you MUST stop and tell the user. You MUST NOT work around allowlists.
 
-## Additional Information
-
-### SonarQube
-
-When a ready `*sonarqube*` MCP is listed, you MUST:
-
-1. Resolve `projectKey` from `.sonarlint/connectedMode.json`, then `sonar.projectKey` in project or CI config (e.g., `sonar-project.properties`), then `search_my_sonarqube_projects`.
-2. `list_pull_requests` and match the ID parsed from the URI (or source branch). You MUST pass that key as `pullRequest` and MUST NOT pass it as `branch`.
-3. `get_project_quality_gate_status`, `search_sonar_issues_in_projects`, `search_security_hotspots` on that pull request.
-
-You MUST cite SonarQube findings that overlap the diff. If no project or analysis exists, you MUST skip with one line in the report. You MUST NOT dump the full issue list.
-
 ## Review
 
 You MUST apply rule precedence: **org / compliance → Ponytail → language rules → core**.
@@ -78,30 +66,18 @@ You MUST skip the following, unless asked:
 
 ## Report
 
-You MUST lead with the verdict, then a compact table. You MUST sort findings highest severity first and omit empty sections.
+The report opens with the merge request title, link, verdict and a short explanation of the verdict. Verdict must be either `APPROVE` (no blocking findings), `REQUEST CHANGES` (at least one blocking finding), or `COMMENT` (suggestions only, or the review is incomplete (draft, empty diff, failing fetch)). After the front matter, a list of findings gives details. You MUST sort findings highest severity first and omit empty sections. If the diff is empty, you MUST say so in one sentence and stop.
 
 ```md
-## Merge Request Review
+# Merge Request Review
 
 **Title**: <title>
 **Link**: [<id>](<uri>)
-**Verdict:** Approve | Request Changes | Comment
-**Why:** <one sentence>
-**Pipeline:** <status or unknown>
+**Verdict**: <VERDICT>
+**Why**: <EXPLANATION OF VERDICT>
+**Pipeline:** <STATUS | "UNKNOWN">
 
-### Findings
-
-|ID|Severity|Location|Finding|
-|:-|:-|:-|:-|
-|0|Blocking|`path:line`|...|
-|1|Suggestion|`path:line`|...|
-|2|Note|`path:line`|...|
+<ID>. **<SEVERITY ∈ (BLOCKING|SUGGESTION|NOTE)>** (<LOCATION as `path:line`>): <EXPLANATION>
 ```
 
-- **Approve**: No blocking findings.
-- **Request changes**: At least one blocking finding.
-- **Comment**: Suggestions only, or the review is incomplete (draft, empty diff, failing fetch).
-
-If the diff is empty, you MUST say so in one sentence and stop.
-
-If the user asked to post feedback, you MUST read the adapter and post **Blocking** and **Suggestion** items as inline comments when a line is known; otherwise one request-level note. You MUST NOT post **Note** items. You MUST NOT approve or merge as part of posting.
+If the user asked to post feedback, you MUST read the adapter and post **BLOCKING** and **SUGGESTION** items as inline comments when a line is known; otherwise one request-level note. You MUST NOT post **Note** items. You MUST NOT approve or merge as part of posting unless the user asks for it.
