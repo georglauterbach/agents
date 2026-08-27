@@ -58,7 +58,7 @@ The report opens with the source and the number of items kept, discarded and ski
 **Skipped**: <n>
 **Discarded**: <n>
 
-<ID>. <ITEM> (<ACTION>): <REASON>
+<ID>. [<ACTION>] <ITEM>: <REASON>
 ```
 
 ## Apply
