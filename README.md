@@ -9,7 +9,9 @@ Create symbolic links to the rules you want to use, from the repository root:
 ```bash
 mkdir -p "${HOME}/.cursor/rules"
 for FILE in rules/*.mdc; do
-  ln -fsn "$(realpath "${FILE}")" "${HOME}/.cursor/rules/$(basename "${FILE}")"
+  LINK_NAME="${HOME}/.cursor/rules/$(basename "${FILE}")"
+  [[ -e ${LINK_NAME} ]] && continue
+  ln -fsn "$(realpath "${FILE}")" "${LINK_NAME}"
 done
 ```
 
@@ -22,7 +24,9 @@ Create symbolic links to the skills you want to use, from the repository root:
 ```bash
 mkdir -p "${HOME}/.cursor/skills"
 for DIR in skills/*/; do
-  ln -fsn "$(realpath "${DIR}")" "${HOME}/.cursor/skills/$(basename "${DIR}")"
+  LINK_NAME="${HOME}/.cursor/skills/$(basename "${DIR}")"
+  [[ -e ${LINK_NAME} ]] && continue
+  ln -fsn "$(realpath "${DIR}")" "${LINK_NAME}"
 done
 ```
 
