@@ -17,7 +17,7 @@ With no argument, the subject is the whole working tree of the current repositor
 
 Before reading source, you MUST learn what the project is and which checks it configures:
 
-1. `.projext_index.yaml`, when it exists — the module map, read first
+1. `.project_index.yaml`, when it exists — the module map, read first
 2. `AGENTS.md`, `README.md`, and `CONTRIBUTING.md` — the stated intent you audit the tree against
 3. `.editorconfig` and tool configuration (`pyproject.toml`, `Cargo.toml`, `cspell.config.yaml`, `.gitignore`, CI workflows) — the project's own rules
 

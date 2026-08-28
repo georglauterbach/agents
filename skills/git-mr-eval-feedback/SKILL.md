@@ -44,7 +44,7 @@ The following classifications are possible:
     - would violate a higher-precedence rule
     - is already applied in the working tree
 
-When two APPLY items conflict, you MUST stop and ask; you MUST NOT pick a side.
+When two KEEP items conflict, you MUST stop and ask; you MUST NOT pick a side.
 
 ## Report
 
@@ -63,4 +63,4 @@ The report opens with the source and the number of items kept, discarded and ski
 
 ## Apply
 
-If the user wants you to apply feedback after the report phase, you start fixing all APPLY items. You MUST NOT apply DISCARD or SKIP items. You MUST fix the root cause the items point at, not only the cited line. You MUST NOT expand into unrequested refactors. You MUST NOT edit files outside an optional path the user named. After edits, you SHOULD run the project's configured checks on the files you changed when those tools are already in use.
+If the user wants you to apply feedback after the report phase, you start fixing all KEEP items. You MUST NOT apply DISCARD or SKIP items. You MUST fix the root cause the items point at, not only the cited line. You MUST NOT expand into unrequested refactors. You MUST NOT edit files outside an optional path the user named. After edits, you SHOULD run the project's configured checks on the files you changed when those tools are already in use.

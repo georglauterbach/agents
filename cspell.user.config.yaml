@@ -17,10 +17,6 @@ ignoreWords:
   - glab
   - Gitea
 
-  # names
-  - rohde
-  - schwarz
-
   # miscellaneous
   - sonarlint
   - sonarqube

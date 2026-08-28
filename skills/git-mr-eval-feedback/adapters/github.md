@@ -10,7 +10,7 @@
 
 ### General
 
-You MUST discover MCP tool schemas with `GetMcpTools` before the first `CallMcpTool` call. You MUST NOT assume tool names; look up tools that cover PR metadata, files/diff, review comments, reviews, and checks.
+You MUST discover MCP tool schemas with `GetDynamicTools` before the first `CallDynamicTool` call. You MUST NOT assume tool names; look up tools that cover PR metadata, files/diff, review comments, reviews, and checks.
 
 ### Load Sequence
 

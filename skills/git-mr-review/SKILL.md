@@ -44,7 +44,7 @@ You MUST skip the following, unless asked:
 
 ## Report
 
-The report opens with the merge request title, link, verdict and a short explanation of the verdict. Verdict must be either `APPROVE` (no blocking findings), `REQUEST CHANGES` (at least one blocking finding), or `COMMENT` (suggestions only, or the review is incomplete (draft, empty diff, failing fetch)). After the front matter, a list of findings gives details. You MUST sort findings by highest severity first and omit empty sections. Severity mist be either `BLOCKING`, `SUGGESTION`, or `NOTE`. If the diff is empty, you MUST say so in one sentence and stop.
+The report opens with the merge request title, link, verdict and a short explanation of the verdict. Verdict MUST be either `APPROVE` (no blocking findings), `REQUEST CHANGES` (at least one blocking finding), or `COMMENT` (suggestions only, or the review is incomplete (draft, empty diff, failing fetch)). After the front matter, a list of findings gives details. You MUST sort findings by highest severity first and omit empty sections. Severity MUST be either `BLOCKING`, `SUGGESTION`, or `NOTE`. If the diff is empty, you MUST say so in one sentence and stop.
 
 ```md
 # Merge Request Review
@@ -55,7 +55,7 @@ The report opens with the merge request title, link, verdict and a short explana
 **Why**: <EXPLANATION OF VERDICT>
 **Pipeline:** <STATUS | "UNKNOWN">
 
-<ID>. **<SEVERITY** (<LOCATION as `path:line` or "UNKNOWN">): <EXPLANATION>
+<ID>. **<SEVERITY>** (<LOCATION as `path:line` or "UNKNOWN">): <EXPLANATION>
 ```
 
 If the user asked to post feedback, you MUST NOT post items with severity "NOTE". Post "BLOCKING" or "SUGGESTION" notes as inline comments when a line is known, otherwise one request-level note. You MUST NOT approve or merge as part of posting unless the user asks for it.

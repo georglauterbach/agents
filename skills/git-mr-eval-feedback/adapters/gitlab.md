@@ -9,7 +9,7 @@
 
 ### General
 
-You MUST discover MCP tool schemas with `GetMcpTools` before the first `CallMcpTool` call. Typical tool names: `get_merge_request`, `get_merge_request_diffs`, `list_merge_request_versions`, `mr_discussions`, `get_merge_request_notes`, `get_merge_request_approval_state`, `get_pipeline`, `list_pipeline_jobs`, `create_merge_request_note`, `create_merge_request_thread`.
+You MUST discover MCP tool schemas with `GetDynamicTools` before the first `CallDynamicTool` call. Typical tool names: `get_merge_request`, `get_merge_request_diffs`, `list_merge_request_versions`, `mr_discussions`, `get_merge_request_notes`, `get_merge_request_approval_state`, `get_pipeline`, `list_pipeline_jobs`, `create_merge_request_note`, `create_merge_request_thread`.
 
 ### Load Sequence
 
